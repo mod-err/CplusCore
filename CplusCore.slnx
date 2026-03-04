@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="CplusCore/CplusCore.vcxproj" />
+  <Project Path="CplusCore/CplusCore.vcxproj" Id="1c2546e5-1fc4-4e9b-8139-e659aee6725b" />
 </Solution>
