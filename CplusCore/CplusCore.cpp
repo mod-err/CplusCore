@@ -160,14 +160,103 @@ int main() {
 	cout << ref2 << endl;
 }*/
 
+/*#include <iostream>
+using namespace std;
 
-/*int* func3() {
+int* func3() {
 	int a = 10;
 	return &a;
 }
+int* func2() {
+	int* a = new int(10);
+	return a;
+}
+
 int main() {
-	int* p = func3();
-	cout << p << endl;
-	//	cout << &p << endl;
-	cout << *p << endl;
+	int* p = func3();  // ① 指针p接收func3返回的地址（即原a的栈区地址）
+	cout << p << endl; // ② 打印p中存储的地址值（就是原a的地址）
+	cout << &p << endl;// ③ 打印指针变量p自己的内存地址（p本身也是个变量，存在栈区）
+	cout << *p << endl;// ④ 解引用p：试图访问p指向的地址（原a的地址）中的值
+
+	int* q = func2();
+	cout << q << endl;
+	cout << &q << endl;
+	cout << *q << endl;
+	delete q;
 }*/
+
+/*#include <iostream>
+using namespace std;
+
+void func(int& ref) { 
+	ref = 100;  //ref是引用，自动转换为*ref
+}
+
+int main() {
+	int a = 10;
+	//内部自动转换为：int* const ref = &a
+	int& ref = a;
+	ref = 20; //ref是引用，自动转换为*ref = 20；
+	cout << a << endl;   //20
+	cout << ref << endl; //20
+
+	func(a);
+	cout << a << endl;   //100
+}*/
+
+/*#include <iostream>
+using namespace std;
+
+//const防止误修改实参
+void func(const int& ref) {
+	cout << ref << endl;
+}
+
+int main() {
+	int a = 10;
+	func(a);
+	//编译器自动改为int temp = 100; int& ref = temp;
+	const int& ref = 100;
+}*/
+
+/*#include <iostream>
+using namespace std;
+
+int func(int a, int b = 10, int c = 30) {
+	return a + b + c;
+}
+
+int main() {
+	int a = 10;
+	cout << func(a) << endl;
+
+	int b = 20, c = 40;
+	cout << func(a, b, c) << endl; //b,c赋值传入
+}*/
+
+#include <iostream>
+using namespace std;
+
+void func() {
+	cout << "func()被调用" << endl;
+}
+void func(int a) {
+	cout << "func(int a)被调用" << endl;
+}
+void func(double a) {
+	cout << "func(double a)被调用" << endl;
+}
+void func(int a, double b) {
+	cout << "func(int a, int b)被调用" << endl;
+}
+void func(double a, int b) {
+	cout << "func(double a, int b)被调用" << endl;
+}
+
+int main() {
+	func();
+	func(10);
+	func(3.14);
+	func(3.14, 10);
+	func(10, 3.14);
+}
