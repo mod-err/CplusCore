@@ -234,7 +234,7 @@ int main() {
 	cout << func(a, b, c) << endl; //b,c赋值传入
 }*/
 
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 
 void func() {
@@ -259,4 +259,146 @@ int main() {
 	func(3.14);
 	func(3.14, 10);
 	func(10, 3.14);
+}*/
+
+/*#include <iostream>
+using namespace std;
+
+//1.引用作为函数重载条件
+void func(int& a) {
+	cout << "func(int &a)" << endl;
+}
+void func(const int& a) {
+	cout << "func(const int& a)" << endl;
+}
+//2.函数重载碰到默认参数
+void func2(int a) {
+	cout << "func(int a)" << endl;
+}
+void func2(int a, int b = 10) {
+	cout << "func2(int a, int b = 10)" << endl;
+}
+
+int main() {
+	int a = 10;
+	func(a);
+	func(10); //const int& a = 10;编译器优化：int temp = 10; const int& a = temp;
+
+	func2(a, 20); //func(a)报错，两个重载都可以被调用
+}*/
+
+/*#include <iostream>
+using namespace std;
+
+#define PI 3.14
+
+class circle {
+	//访问权限：公共权限
+public:
+	//属性：一般为变量
+	int r; //半径
+
+	//行为：一般为函数
+	double getC() {
+		return 2 * PI * r;
+	}
+};
+
+int main() {
+	//通过圆类创建具体的圆（对象）
+	//实例化——通过一个类创建一个对象的过程
+	circle c1;
+	c1.r = 1;
+	cout << "圆的周长：" << c1.getC() << endl;
+}*/
+
+/*#include <iostream>
+#include <string>
+using namespace std;
+
+class student {
+	//访问权限：公共权限
+public:
+	//属性：一般为变量
+	string name;
+	string id;
+
+	//行为：一般为函数
+	void setName(string Name) {
+		name = Name;
+	}
+	void setID(string ID) {
+		id = ID;
+	}
+	void get() {
+		cout << name << endl;
+		cout << id << endl;
+	}
+};
+
+int main() {
+	//通过圆类创建具体的圆（对象）
+	//实例化——通过一个类创建一个对象的过程
+	student s1;
+	s1.setName("张三");
+	s1.setID("25021211");
+	s1.get();
+}*/
+
+/*#include <iostream>
+#include <string>
+using namespace std;
+
+class family {
+	//公共权限
+public:
+	string name;
+	//保护权限
+protected:
+	string car;
+	//私有权限
+private:
+	string password;
+};
+int main() {
+	family f;
+	f.name = "李四";
+	f.car = "奔驰";
+	f.password = "123";
+}*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class student {
+
+public:
+	void setname(string Name) {
+		name = Name;
+	}
+	void getname() {
+		cout << name << endl;
+	}
+	void getage() {
+		cout << age << endl;
+	}
+	void setid(string ID) {
+		id = ID;
+	}
+private:
+	string name; //可读可写
+	int age = 18;	 //只读
+	string id;	 //只写
+};
+
+int main() {
+	student s;
+	//s.name = "张三";
+	s.setname("张三");
+	s.getname();
+	//s.age
+	s.getage();
+	//s.id
+	s.setid("2002111");
 }
