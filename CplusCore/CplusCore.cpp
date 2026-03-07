@@ -367,7 +367,7 @@ int main() {
 	f.password = "123";
 }*/
 
-#include <iostream>
+/*#include <iostream>
 #include <string>
 using namespace std;
 
@@ -401,4 +401,204 @@ int main() {
 	s.getage();
 	//s.id
 	s.setid("2002111");
+}*/
+
+/*#include <iostream>
+#include <string>
+using namespace std;
+
+class Cube {
+public:
+	//行为：
+	void setLWH(int l, int w, int h) {
+		L = l;
+		W = w;
+		H = h;
+	}
+	//获取面积
+	int getS() {
+		return 2 * (L * W + L * H + W * H);
+	}
+	//获取体积
+	int getV() {
+		return L * W * H;
+	}
+	//成员函数判断
+	bool isSameClass(Cube& c2) {
+		if (getS() == c2.getS() && getV() == c2.getV()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+private:
+	//属性：
+	int L;
+	int W;
+	int H;
+};
+//全局函数判断
+bool isSameGlobal(Cube& c1, Cube& c2) {
+	if (c1.getS() == c2.getS() && c1.getV() == c2.getV()) {
+		return true;
+	} else {
+		return false;
+	}
+}
+int main() {
+	Cube cube1;
+	cube1.setLWH(1, 2, 3);
+	cout << cube1.getS() << endl;
+	cout << cube1.getV() << endl;
+
+	Cube cube2;
+	cube2.setLWH(2, 3, 4);
+
+	if (isSameGlobal(cube1, cube2)) {
+		cout << "S和V相等" << endl;
+	} else {
+		cout << "S和V不相等" << endl;
+	}
+
+	if(cube2.isSameClass(cube2)) {
+		cout << "S和V相等" << endl;
+	} else {
+		cout << "S和V不相等" << endl;
+	}
+}*/
+
+/*#include <iostream>
+using namespace std;
+class Preson {
+public:
+	//构造函数
+	Preson() {
+		cout << "构造函数被调用" << endl;
+	}
+	//析构函数
+	~Preson() {
+		cout << "析构函数被调用" << endl;
+	}
+};
+int main() {
+	Preson preson;
+}*/
+
+/*#include <iostream>
+using namespace std;
+class Preson {
+public:
+	//构造函数
+	Preson() {
+		cout << "无参构造函数被调用" << endl;
+	}
+	Preson(int a) {
+		cout << "有参构造函数被调用" << endl;
+		age = 10;
+	}
+	Preson(const Preson& preson) {
+		cout << "拷贝构造函数被调用" << endl;
+		age = preson.age;
+	}
+	//析构函数
+	~Preson() {
+		cout << "析构函数被调用" << endl;
+	}
+	int age;
+};
+int main() {
+	//括号法
+	//Preson p1;
+	//Preson p2(10);
+	//Preson p3(p2);
+	//cout << p2.age << endl;
+	//cout << p3.age << endl;
+
+	//显式法
+	//Preson p1;
+	//Preson p2 = Preson(10);
+	//Preson p3 = Preson(p2);
+
+	//隐式法
+	//Preson p1;
+	//Preson p2 = 10;
+	//Preson p3 = p2;
+}*/
+
+/*#include <iostream>
+using namespace std;
+
+class Preson {
+public:
+	Preson() {
+		cout << "无参构造函数被调用" << endl;
+	}
+	Preson(int a) {
+		cout << "有参构造函数被调用" << endl;
+		age = a;
+	}
+	Preson(const Preson& preson) {
+		cout << "拷贝构造函数被调用" << endl;
+		age = preson.age;
+	}
+	~Preson() {
+		cout << "析构函数被调用" << endl;
+	}
+	//属性
+	int age;
+};
+
+void test1() {
+	Preson p1(10);
+	Preson p2(p1);
+}
+void test2(Preson preson) {
+	
+}
+Preson test3() {
+	Preson p4;
+	p4.age = 100;
+	cout << &p4 << endl;
+	cout << p4.age << endl;
+	return p4;
+}
+int main() {
+	//使用一个已经创建完毕的对象来初始化新的对象
+	//test1();
+	//值传递的方式给函数参数传值
+	//Preson p3;
+	//test2(p3); //实参p3被拷贝给形参preson
+	//以值的方式返回局部对象
+	Preson p5 = test3();
+	p5.age = 10;
+	cout << &p5 << endl;
+	cout << p5.age << endl;
+}*/
+
+#include <iostream>
+using namespace std;
+class Preson {
+public:
+	//Preson() {
+	//	cout << "无参构造函数被调用" << endl;
+	//}
+	//Preson(int a) {
+	//	cout << "有参构造函数被调用" << endl;
+	//	age = a;
+	//}
+	Preson(const Preson& preson) {
+		cout << "拷贝构造函数被调用" << endl;
+		age = preson.age;
+	}
+	~Preson() {
+		cout << "析构函数被调用" << endl;
+	}
+	//属性
+	int age;
+};
+int main() {
+	Preson p1;
+	Preson p2(10);
+	Preson p3(p2);
+	cout << p3.age << endl;
 }

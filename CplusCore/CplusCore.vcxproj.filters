@@ -18,5 +18,16 @@
     <ClCompile Include="CplusCore.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="pointcircle.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="circle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="point.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
