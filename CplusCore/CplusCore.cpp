@@ -575,7 +575,7 @@ int main() {
 	cout << p5.age << endl;
 }*/
 
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 class Preson {
 public:
@@ -601,4 +601,63 @@ int main() {
 	Preson p2(10);
 	Preson p3(p2);
 	cout << p3.age << endl;
+}*/
+
+/*#include <iostream>
+using namespace std;
+
+class Preson {
+public:
+	Preson() {
+		cout << "无参构造函数被调用" << endl;
+	}
+	Preson(int a, int h) {
+		age = a;
+		height = new int(h); //堆区开辟内存，手动释放
+		cout << "有参构造函数被调用" << endl;
+	}
+	Preson(const Preson& preson) {
+		age = preson.age;
+		//浅拷贝：编译器默认实现
+		//height = preson.height;
+		//深拷贝
+		height = new int(*preson.height);
+		cout << "拷贝构造函数被调用" << endl;
+	}
+	~Preson() {
+		if (height != NULL) {//检查指针是否为空
+			delete height;   //释放指针指向的堆内存
+			height = NULL;	 //将指针设为空
+		}
+		cout << "析构函数被调用" << endl;
+	}
+	int age;
+	int* height;
+};
+
+int main() {
+	Preson p1(18, 160);
+	cout << p1.age << " " << *p1.height << endl;
+	cout << &p1.age << endl;
+	cout << p1.height << endl;
+	Preson p2(p1);
+	cout << p2.age << " " << *p2.height << endl;
+	cout << &p2.age << endl;
+	cout << p2.height << endl;
+}*/
+
+#include <iostream>
+using namespace std;
+class Preson {	
+public:
+	Preson(int A, int B, int C) {
+		a = A;
+		b = B;
+		c = C;
+	}
+	int a, b, c;
+};
+int main() {
+	Preson p(1, 2, 3);
+	cout << p.a << " " << p.b << " " << p.c << endl;
 }
