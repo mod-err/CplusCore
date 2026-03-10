@@ -646,18 +646,184 @@ int main() {
 	cout << p2.height << endl;
 }*/
 
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 class Preson {	
 public:
-	Preson(int A, int B, int C) {
-		a = A;
-		b = B;
-		c = C;
+	//Preson(int A, int B, int C) {
+	//	a = A;
+	//	b = B;
+	//	c = C;
+	//}
+	Preson() :a(1), b(2), c(3) {
+	}
+	Preson(int A, int B, int C) :a(A), b(B), c(C) {
 	}
 	int a, b, c;
 };
 int main() {
-	Preson p(1, 2, 3);
+	//Preson p(1, 2, 3);
+	//Preson p;
+	Preson p(2, 3, 4);
 	cout << p.a << " " << p.b << " " << p.c << endl;
+}*/
+
+/*#include <iostream>
+#include <string>
+using namespace std;
+class Phone {
+public:
+	Phone(string name) {
+		phoneName = name;
+		cout << "Phone的构造函数调用" << endl;
+	}
+	~Phone(){
+		cout << "Phone的析构函数调用" << endl;
+	}
+	string phoneName;
+};
+class Person {
+public:
+	//Phone p = Phone(pname)  
+	Person(string name, string pname):mName(name), p(pname){
+		cout << "Person的构造函数调用" << endl;
+	}
+	~Person() {
+		cout << "Person的析构函数调用" << endl;
+	}
+	string mName;
+	Phone p;
+};
+int main() {
+	Person person("张三", "苹果15");
+	cout << person.mName << person.p.phoneName << endl;
+}*/
+
+/*#include <iostream>
+#include <string>
+using namespace std;
+class Person {
+public:
+	static int age;//类内声明
+	int sex;
+	static void func() {
+		sex = 0;
+		cout << "访问静态成员函数" << endl;
+	}
+private:
+	static void func2() {
+		cout << "访问静态成员函数" << endl;
+	}
+};
+
+int Person::age = 100;//类外初始化
+
+int main() {
+	Person p;
+	cout << p.age << endl;//100
+	Person p1;
+	p1.age = 200;
+	cout << p.age << endl;//200
+	cout << Person::age << endl;
+
+	p.func();
+	Person::func();
+	p.func2();
+}*/
+
+/*#include <iostream>
+using namespace std;
+class Person {
+public:
+	int age;//非静态成员变量占对象空间
+	static int sex;//静态成员变量不占对象空间
+	void func() {}//函数不占对象内存空间
+	static void func1() {}//函数不占对象空间
+};
+int main() {
+	Person p;
+	cout << sizeof(p) << endl;
+}*/
+
+/*#include <iostream>
+using namespace std;
+class Person {
+public:
+	Person(int age) {
+		this->age = age;
+		//cout << this << endl;
+	}
+	void func(Person& p) {
+		this->age += p.age;
+	}
+	Person& func1(Person& p) {
+		this->age += p.age;
+		//cout << this << endl;
+		return *this;
+	}
+	int age;
+};
+void test1() {
+	Person p(10);
+	cout << &p << endl;
+	cout << p.age << endl;
 }
+void test2() {
+	Person p1(10);
+	Person p2(10);
+	p2.func(p1);
+	cout << p2.age << endl;
+}
+int main() {
+	Person p1(10);
+	Person p2(10);
+	p2.func1(p1).func1(p1);
+	cout << &p2 << endl;
+	cout << p2.age << endl;
+}*/
+
+/*#include <iostream>
+using namespace std;
+class Person {
+public:
+	void showClassName() {
+		cout << "我是Person类" << endl;
+	}
+	void showPersonAge() {
+		if (this == NULL) {
+			return;
+		}
+		cout << age << endl;
+	}
+	int age;
+};
+
+int main() {
+	Person* p = NULL;
+	p->showClassName();
+	p->showPersonAge();
+}*/
+
+/*#include <iostream>
+using namespace std;
+class Person {
+public:
+	void setAge() const {
+		//age = 100;
+		sex = 1;//this->sex = 1;
+		//this = NULL;
+	}
+	void func() {
+		age = 100;
+	}
+	int age;
+	mutable int sex;
+};
+
+int main() {
+	//Person p;
+	//p.setAge();
+	const Person p;
+	p.setAge();
+	p.func();
+}*/

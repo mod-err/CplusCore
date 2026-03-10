@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CplusCore.cpp" />
+    <ClCompile Include="CplusCore2.cpp" />
     <ClCompile Include="pointcircle.cpp" />
   </ItemGroup>
   <ItemGroup>
