@@ -400,7 +400,7 @@ int main() {
 	Son s;
 }*/
 
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 class Base {
 public:
@@ -426,4 +426,47 @@ int main() {
 	s.func();
 	s.Base::func();
 	s.Base::func(100);
+}*/
+
+#include <iostream>
+using namespace std;
+class Base {
+public:
+	static int mA;
+	static void func() {
+		cout << "Base" << endl;
+	}
+	static void func(int a) {
+		cout << "Base a" << endl;
+	}
+};
+int Base::mA = 100;
+
+class Son : public Base {
+public:
+	static int mA;
+	static void func() {
+		cout << "Son" << endl;
+	}
+};
+int Son::mA = 200;
+
+int main() {
+	//静态成员变量
+	//1.通过对象访问
+	Son s;
+	cout << s.mA << endl;
+	cout << s.Base::mA << endl;
+	//2.通过类名访问
+	cout << Son::mA << endl;
+	cout << Son::Base::mA << endl;
+
+	//静态成员函数
+    //1.通过对象访问
+	s.func();
+	s.Base::func();
+	//2.通过类名访问
+	Son::func();
+	Son::Base::func();
+	Son::Base::func(100);
 }
