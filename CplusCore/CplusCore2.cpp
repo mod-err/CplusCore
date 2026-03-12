@@ -428,7 +428,7 @@ int main() {
 	s.Base::func(100);
 }*/
 
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 class Base {
 public:
@@ -469,4 +469,77 @@ int main() {
 	Son::func();
 	Son::Base::func();
 	Son::Base::func(100);
+}*/
+
+/*#include <iostream>
+using namespace std;
+class Base1 {
+public:
+	int mA = 100;
+};
+class Base2 {
+public:
+	int mA = 200;
+	int mB = 300;
+};
+class Son : public Base1, public Base2{
+public:
+	int mC = 400;
+};
+int main() {
+	Son s;
+	cout << sizeof(s) << endl;//12字节
+	cout << s.Base1::mA << endl;
+}*/
+
+/*#include <iostream>
+using namespace std;
+class Animal {
+public:
+	int mAge;
+};
+//利用虚继承，解决数据有两份，资源浪费问题
+//继承之前加关键字virtual
+//Animal为虚基类
+class Sheep : virtual public Animal {};
+class Tuo : virtual public Animal {};
+class SheepTuo : public Sheep, public Tuo {};
+int main() {
+	SheepTuo cnm;
+	//菱形继承，两个父类有相同的数据，需要加作用域区分
+	cnm.Sheep::mAge = 18;
+	cnm.Tuo::mAge = 28;
+	cout << cnm.Sheep::mAge << endl;//28
+	cout << cnm.Tuo::mAge << endl;//28
+	cout << cnm.mAge << endl;//28
+}*/
+
+#include <iostream>
+using namespace std;
+class Animal {
+public:
+	virtual void speak() {
+		cout << "动物在说话" << endl;
+	}
+};
+class Cat : public Animal {
+public:
+	//void speak() {
+	//	cout << "小猫在说话" << endl;
+	//}
+};
+class Dog : public Animal {
+public:
+	void speak() {
+		cout << "小狗在说话" << endl;
+	}
+};
+void doSpeak(Animal& animal) {
+	animal.speak();
+}
+int main() {
+	Cat cat;
+	doSpeak(cat);
+	Dog dog;
+	doSpeak(dog);
 }
