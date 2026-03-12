@@ -242,7 +242,7 @@ int main() {
 	cout << *p3.mage << endl;
 }*/
 
-#include <iostream>
+/*#include <iostream>
 #include <string>
 using namespace std;
 class Person {
@@ -259,7 +259,6 @@ public:
 	string mName;
 	int mAge;
 };
-
 int main() {
 	Person p1("张三", 19);
 	Person p2("张三", 19);
@@ -267,4 +266,102 @@ int main() {
 	if(p1 == p2) cout << "相同" << endl;
 	else if (p1 != p2) cout << "不相同" << endl;
 
+}*/
+
+/*#include <iostream>
+#include <string>
+using namespace std;
+class MyClass {
+public:
+	void operator()(string a) {
+		cout << a << endl;
+	}
+	int operator()(int a, int b) {
+		return a + b;
+	}
+};
+int main() {
+	MyClass m;
+	m("你好");//m.operator()("你好");
+	cout << m(10, 20) <<endl;//m.operator()(10, 20);
+	MyClass()("我不好");//MyClass().operator()("我不好");
+	cout << MyClass()(10, 40) << endl;
+}*/
+
+/*#include <iostream>
+using namespace std;
+class BasePage {
+public:
+	void header() {
+		cout << "公共头部：首页、登录注册" << endl;
+	}
+	void footer() {
+		cout << "公共底部：帮助中心、交流合作" << endl;
+	}
+	void left() {
+		cout << "公共左侧：java、python、c++" << endl;
+	}
+};
+class Java : public BasePage {
+public:
+	void contenet()
+	{
+		cout << "java学科视频" << endl;
+	}
+};
+class CPP : public BasePage {
+public:
+	void contenet()
+	{
+		cout << "C++学科视频" << endl;
+	}
+};
+
+int main() {
+	Java j;
+	j.contenet();
+	j.header();
+	j.footer();
+	j.left();
+
+	CPP c;
+	c.contenet();
+	c.header();
+	c.footer();
+	c.left();
+}*/
+
+#include <iostream>
+using namespace std;
+class Base {
+public:
+	int mA;
+protected:
+	int mB;
+private:
+	int mC;
+};
+class son1 : public Base {
+public:
+	son1(){
+		mA = 10;//父类：公共权限成员，子类：公共权限
+		mB = 20;//父类：保护权限成员，子类：保护权限
+		//mC = 30;父类：私有权限成员，子类访问不到
+	}
+};
+class son2 : protected Base {
+public:
+	son2() {
+		mA = 10;//父类：公共权限成员，子类：保护权限
+		mB = 20;//父类：保护权限成员，子类：保护权限
+		//mC = 30;父类：私有权限成员，子类访问不到
+	}
+};
+int main() {
+	son1 s1;
+	cout << &s1.mA << endl;//s1.mB
+
+	son2 s2;
+	//cout << &s2.mA << endl;
+	//cout << &s2.mB << endl;
 }
