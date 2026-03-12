@@ -331,7 +331,7 @@ int main() {
 	c.left();
 }*/
 
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 class Base {
 public:
@@ -357,11 +357,73 @@ public:
 		//mC = 30;父类：私有权限成员，子类访问不到
 	}
 };
+class son3 : private Base {
+	son3() {
+		mA = 10;//父类：公共权限成员，子类：私有权限
+		mB = 20;//父类：保护权限成员，子类：私有权限
+		//mC = 30;父类：私有权限成员，子类访问不到
+	}
+};
 int main() {
 	son1 s1;
-	cout << &s1.mA << endl;//s1.mB
+	cout << s1.mA << endl;//s1.mB
 
 	son2 s2;
-	//cout << &s2.mA << endl;
-	//cout << &s2.mB << endl;
+	//cout << s2.mA << endl;
+	//cout << s2.mB << endl;
+	son3 s3;
+	cout << s3.mA << endl;
+}*/
+
+/*#include <iostream>
+using namespace std;
+class Base {
+public:
+	Base() {
+		cout << "Base的构造函数被调用" << endl;
+	}
+	~Base() {
+		cout << "Base的析构函数被调用" << endl;
+	}
+};
+class Son : public Base {
+public:
+	Son() {
+		cout << "Son的构造函数被调用" << endl;
+	}
+	~Son() {
+		cout << "Son的析构函数被调用" << endl;
+	}
+};
+int main() {
+	//Base b;
+	Son s;
+}*/
+
+#include <iostream>
+using namespace std;
+class Base {
+public:
+	int mA = 100;
+	void func() {
+		cout << "Base" << endl;
+	}
+	void func(int a) {
+		cout << "Base_a" << endl;
+	}
+};
+class Son : public Base {
+public:
+	int mA = 200;
+	void func() {
+		cout << "Son" << endl;
+	}
+};
+int main() {
+	Son s;
+	cout << s.mA << endl;
+	cout << s.Base::mA << endl;
+	s.func();
+	s.Base::func();
+	s.Base::func(100);
 }
