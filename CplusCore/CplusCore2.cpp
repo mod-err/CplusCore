@@ -514,7 +514,7 @@ int main() {
 	cout << cnm.mAge << endl;//28
 }*/
 
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 class Animal {
 public:
@@ -542,4 +542,90 @@ int main() {
 	doSpeak(cat);
 	Dog dog;
 	doSpeak(dog);
+}*/
+
+/*#include <iostream>
+using namespace std;
+class Calculator {
+public:
+	virtual int getResult() {
+		return 0;
+	}
+	int mA, mB;
+};
+class Add : public Calculator {
+public:
+	int getResult() {
+		return mA + mB;
+	}
+};
+class Sub : public Calculator {
+public:
+	int getResult() {
+		return mA - mB;
+	}
+};
+class Mul : public Calculator {
+public:
+	int getResult() {
+		return mA * mB;
+	}
+};
+void test1() {
+	Calculator* cal;
+
+	cal = new Add;
+	cal->mA = 10;
+	cal->mB = 10;
+	cout << cal->getResult() << endl;
+	delete cal;
+
+	cal = new Sub;
+	cal->mA = 10;
+	cal->mB = 10;
+	cout << cal->getResult() << endl;
+	delete cal;
+
+	cal = new Mul;
+	cal->mA = 10;
+	cal->mB = 10;
+	cout << cal->getResult() << endl;
+	delete cal;
 }
+void result(Calculator& cal) {
+	cal.getResult();
+}
+void test2() {
+	Calculator cal;
+	cal.mA = 10;
+	cal.mB = 10;
+
+	Add add;
+	result(add);
+	cout << add.getResult() << endl;
+}
+int main() {
+}*/
+
+/*#include <iostream>
+using namespace std;
+class Base {
+public:
+	virtual void func() = 0;//类存在纯虚函数，此类成为抽象类
+};
+class Son : public Base 
+{
+public:
+	void func() {
+		cout << "func函数调用" << endl;
+	}
+};
+int main() {
+	//Base base;//抽象类无法实例化对象
+	//Base* b = new Son;
+	//b->func();
+
+	Son s;//子类重写父类的虚函数，否则无法实例化对象
+	Base& base = s;
+	base.func();
+}*/
