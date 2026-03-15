@@ -130,6 +130,7 @@
     <ClCompile Include="CplusCore.cpp" />
     <ClCompile Include="CplusCore2.cpp" />
     <ClCompile Include="pointcircle.cpp" />
+    <ClCompile Include="CplusCore3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="circle.h" />

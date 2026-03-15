@@ -629,3 +629,4 @@ int main() {
 	Base& base = s;
 	base.func();
 }*/
+
